@@ -6,6 +6,8 @@ var path = require('path')
 var app = express();
 var PORT = process.env.PORT || 8081
 
+require('dotenv').config()
+
 //urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
@@ -15,7 +17,7 @@ app.use(express.static(path.join(__dirname,'./frontend/dist')))
 //give the database connecting information
 var connection = mysql.createConnection({
 
-    host: "localhost",
+    host: process.env.DB_host,
     user: "ali_23",
     password: "alicd200",
     database:"student"
